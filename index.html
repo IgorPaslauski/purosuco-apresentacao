@@ -568,6 +568,21 @@
     show(next);
   }, true);
 
+  var press = null;
+  document.addEventListener("pointerdown", function (event) {
+    if (event.button !== 0) { press = null; return; }
+    press = { x: event.clientX, y: event.clientY };
+  });
+  document.addEventListener("pointerup", function (event) {
+    if (!press || event.button !== 0) { press = null; return; }
+    var dx = event.clientX - press.x;
+    var dy = event.clientY - press.y;
+    press = null;
+    if (Math.abs(dx) > 8 || Math.abs(dy) > 8) return;
+    if (String(window.getSelection()) !== "") return;
+    show(event.clientX < window.innerWidth / 2 ? current - 1 : current + 1);
+  });
+
   window.addEventListener("resize", fitStage);
   fitStage();
   var initial = Number(String(location.hash || "").replace("#", ""));
