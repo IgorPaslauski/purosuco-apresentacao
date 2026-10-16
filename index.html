@@ -271,6 +271,32 @@
   .link.from-hub::before { left: 0; transform: translateY(-50%) rotate(-135deg); }
   .caption { margin: 0; color: var(--muted); font-size: 1.6cqw; }
 
+  .words {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.55cqw 1cqw;
+    align-content: center;
+  }
+  .word {
+    display: grid;
+    grid-template-columns: 1.2fr 0.9fr;
+    gap: 0.5cqw;
+    align-items: baseline;
+    background: var(--code);
+    border-radius: 0.45cqw;
+    padding: 0.55cqw 0.75cqw;
+    min-width: 0;
+  }
+  .word b {
+    font-family: "Cascadia Code", Consolas, ui-monospace, monospace;
+    font-size: 1.45cqw;
+    font-weight: 560;
+    color: var(--green);
+  }
+  .word span { font-size: 1.4cqw; color: var(--ink); }
+
   .examples {
     flex: 1;
     min-height: 0;
@@ -437,6 +463,25 @@
       </div>
     </div>
     <p class="caption">Os dois editores falam com o mesmo servidor.</p>
+  </section>
+
+  <section class="slide">
+    <h2 class="title">As palavras</h2>
+    <p class="kicker-inline">O meme, e o que ele vira</p>
+    <div class="words">
+      <div class="word"><b>MANDA_AI</b><span>escreve</span></div>
+      <div class="word"><b>RECEBA</b><span>atribui</span></div>
+      <div class="word"><b>NUMERO</b><span>int</span></div>
+      <div class="word"><b>ENQUANTO_TANKAR</b><span>while</span></div>
+      <div class="word"><b>VAI_DAR_BOM</b><span>try</span></div>
+      <div class="word"><b>AI_TU_ME_QUEBRA</b><span>throw</span></div>
+      <div class="word"><b>DEU_RUIM</b><span>catch</span></div>
+      <div class="word"><b>PAPO</b><span>string</span></div>
+      <div class="word"><b>DE_QUALQUER_JEITO</b><span>finally</span></div>
+      <div class="word"><b>PRA_CADA_UM</b><span>foreach</span></div>
+      <div class="word"><b>DENTRO_DE</b><span>in</span></div>
+    </div>
+    <p class="note">São as palavras dos exemplos do próximo slide.</p>
   </section>
 
   <section class="slide">
