@@ -171,6 +171,12 @@
     text-transform: uppercase;
     color: var(--yellow);
   }
+  .note {
+    margin: 0;
+    color: var(--muted);
+    font-size: 1.32cqw;
+    line-height: 1.25;
+  }
   .stage-card .code, .stage-card .ir { background: transparent; padding: 0; font-size: 1.45cqw; line-height: 1.32; }
   .token-col { display: flex; flex-direction: column; gap: 0.35cqw; }
   .token b {
@@ -324,9 +330,11 @@
       <div>    }</div>
       <div>}</div>
     </div>
+    <p class="note">A linha marcada é a chamada. Ela segue para as quatro fases abaixo.</p>
     <div class="stages">
       <article class="stage-card">
         <h3>Tokens</h3>
+        <p class="note">Corta o texto em pedaços, na ordem do arquivo. Ainda não tem hierarquia.</p>
         <div class="token-col">
           <div class="token part-name"><b>MANDA_AI</b><span>Keyword</span></div>
           <div class="token"><b>(</b><span>OpenParen</span></div>
@@ -337,10 +345,12 @@
       </article>
       <article class="stage-card">
         <h3>Árvore</h3>
+        <p class="note">Os pedaços ganham estrutura. A string fica dentro da chamada.</p>
         <div class="ast">ExpressionStatement<br>└ Call MANDA_AI<br>&nbsp;&nbsp;├ Name MANDA_AI<br>&nbsp;&nbsp;└ Literal RECEBA!</div>
       </article>
       <article class="stage-card">
         <h3>Três endereços</h3>
+        <p class="note">Cada linha faz uma coisa. O texto vira param. A chamada vira call.</p>
         <pre class="ir">func Main() -> VOLTA_NADA
     param <span class="ir-lit">"RECEBA!"</span>
     call <span class="ir-name">MANDA_AI</span>, 1
@@ -348,6 +358,7 @@
       </article>
       <article class="stage-card">
         <h3>Saída</h3>
+        <p class="note">A VM executou a chamada.</p>
         <p class="out-big">RECEBA!</p>
       </article>
     </div>
@@ -359,9 +370,11 @@
     <pre class="diag">exemplo.suco:1:21: erro PS003 — QUE PAPINHO É ESSE?
  1 | NUMERO idade RECEBA "vinte";
    |                     <span class="caret">^^^^^^^</span> Esperava NUMERO, recebeu PAPO.</pre>
+    <p class="note">O circunflexo marca só "vinte". Esperava número, recebeu texto.</p>
     <div class="lower">
       <article class="panel">
         <h3>Dobra de constantes</h3>
+        <p class="note">2 vezes 3 já vale 6. O1 troca a conta antes de executar.</p>
         <div class="code" data-lang="suco"><div>NUMERO x RECEBA 2 * 3;</div></div>
         <div class="cmp">
           <div>
@@ -377,6 +390,7 @@
       </article>
       <article class="panel">
         <h3>Três saídas</h3>
+        <p class="note">A VM executa o código intermediário. C e C# traduzem a árvore.</p>
         <div class="backs">
           <div class="back path-ir">
             <h3>AST → IR → VM</h3>
@@ -411,7 +425,10 @@
           <p class="role"><b>Snippets</b> escrevem o esqueleto.</p>
         </article>
         <div class="link to-hub"></div>
-        <article class="hub"><h3>purosuco-lsp</h3></article>
+        <article class="hub">
+          <h3>purosuco-lsp</h3>
+          <p class="role">Completa, explica e marca o erro. É o mesmo analisador do compilador.</p>
+        </article>
         <div class="link from-hub"></div>
         <article class="side">
           <h3>Zed</h3>
@@ -426,12 +443,12 @@
     <h2 class="title">Exemplos</h2>
     <div class="examples">
       <article class="example">
-        <h3>Hello</h3>
+        <h3>Hello · o mesmo do pipeline</h3>
         <div class="code" data-lang="suco"><div>MANDA_AI("RECEBA!");</div></div>
         <div class="out">RECEBA!</div>
       </article>
       <article class="example">
-        <h3>Laço</h3>
+        <h3>Laço · enquanto i for menor que 3, imprime i</h3>
         <div class="code" data-lang="suco">
           <div>NUMERO i RECEBA 0;</div>
           <div>ENQUANTO_TANKAR i &lt; 3 {</div>
@@ -442,7 +459,7 @@
         <div class="out">0<br>1<br>2</div>
       </article>
       <article class="example">
-        <h3>Exceção</h3>
+        <h3>Exceção · o erro vira mensagem, e o bloco do fim sempre roda</h3>
         <div class="code" data-lang="suco">
           <div>VAI_DAR_BOM {</div>
           <div>    AI_TU_ME_QUEBRA "pix recusado";</div>
@@ -455,7 +472,7 @@
         <div class="out">pix recusado<br>fechou a conta</div>
       </article>
       <article class="example">
-        <h3>Array · 10, 8, 9</h3>
+        <h3>Array · percorre 10, 8 e 9, e imprime o tamanho</h3>
         <div class="code" data-lang="suco">
           <div class="gap">… declaração de notas</div>
           <div>PRA_CADA_UM NUMERO nota DENTRO_DE notas {</div>
